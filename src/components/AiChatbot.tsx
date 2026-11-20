@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY } from "@/data/translations";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 interface Message {
   id: string;
@@ -102,6 +103,7 @@ export function AiChatbot() {
     setLoading(true);
 
     try {
+      const recaptchaToken = await getRecaptchaToken("chat");
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -112,6 +114,7 @@ export function AiChatbot() {
           })),
           lang,
           website: honeypot,
+          recaptchaToken,
         }),
       });
 

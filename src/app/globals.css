@@ -153,3 +153,8 @@ body {
   border-color: rgba(168, 85, 247, 0.45);
   box-shadow: 0 0 35px -10px rgba(139, 92, 246, 0.35);
 }
+
+/* Hide default Google badge since custom RecaptchaBadge is rendered cleanly */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

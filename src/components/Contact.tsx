@@ -21,6 +21,7 @@ import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY } from "@/data/translations";
 import { GradientWaves } from "./GradientWaves";
 import { TextReveal } from "./TextReveal";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 export function Contact() {
   const { lang } = usePreferences();
@@ -68,6 +69,7 @@ export function Contact() {
 
     setSubmitting(true);
     try {
+      const recaptchaToken = await getRecaptchaToken("contact");
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,6 +80,7 @@ export function Contact() {
           message,
           website: honeypot,
           startedAt: startedAtRef.current,
+          recaptchaToken,
         }),
       });
 

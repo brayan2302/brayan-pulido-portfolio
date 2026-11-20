@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { PreferencesProvider } from "@/context/PreferencesContext";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -9,7 +10,10 @@ import { RecaptchaBadge } from "@/components/RecaptchaBadge";
 import { CONTACT_INFO } from "@/data/portfolio";
 import "./globals.css";
 
-const SITE_URL = "https://brayanpulido.com";
+const SITE_URL = "https://www.brayanantonio.lat";
+const RECAPTCHA_SITE_KEY =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+  "6LfLRSkuAAAAAHyDl1AeJWvAHk6RDIpAiqeqlVlM";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -227,6 +231,10 @@ export default function RootLayout({
           <RecaptchaBadge />
         </PreferencesProvider>
         <Analytics />
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
