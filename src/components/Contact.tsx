@@ -9,6 +9,7 @@ import {
   Copy,
   Check,
   ArrowUpRight,
+  MessageCircle,
   CheckCircle2,
   Loader2,
   MapPin,
@@ -168,14 +169,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 border border-purple-400/30 shadow-[0_0_28px_rgba(139,92,246,0.4)] transition-all cursor-pointer"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="https://whataform.com/assets/website/images/media/whatsapp-whataform-logo.png"
-                      alt="WhatsApp"
-                      width={18}
-                      height={18}
-                      className="w-4 h-4 object-contain shrink-0"
-                    />
+                    <MessageCircle className="w-4 h-4 shrink-0" />
                     <span>{copy.whatsappBtn}</span>
                     <ArrowUpRight className="w-4 h-4 shrink-0" />
                   </a>

@@ -94,6 +94,12 @@ export function Hero() {
       </div>
       <GradientWaves className="absolute inset-0" intensity="normal" />
 
+      {/* Smooth bottom fade into page background so there is no hard horizontal seam */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 sm:h-48 bg-gradient-to-b from-transparent to-[var(--background)] z-[1]"
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Availability Status */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-6 shadow-sm">
