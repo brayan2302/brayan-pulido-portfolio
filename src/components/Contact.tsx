@@ -37,13 +37,43 @@ export function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [offerApplied, setOfferApplied] = useState(false);
   const startedAtRef = useRef(0);
 
   const service = copy.serviceOptions[serviceIdx] ?? copy.serviceOptions[0];
 
   useEffect(() => {
     startedAtRef.current = Date.now();
-  }, []);
+
+    const applyOfferToMessage = () => {
+      setOfferApplied(true);
+      const promoTag = "🎁 SPECIAL OFFER: 20% OFF";
+      setMessage((prev) => {
+        if (prev.includes("20% OFF")) return prev;
+        if (!prev.trim()) {
+          return lang === "es"
+            ? `Hola Brayan, me interesa cotizar un proyecto.\n\n${promoTag}`
+            : `Hi Brayan, I'd like to request a quote for a project.\n\n${promoTag}`;
+        }
+        return `${prev.trimEnd()}\n\n${promoTag}`;
+      });
+      setPastedField("message");
+      setTimeout(() => {
+        setPastedField((curr) => (curr === "message" ? null : curr));
+      }, 1200);
+    };
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("offer") === "20off") {
+        setTimeout(applyOfferToMessage, 0);
+      }
+    } catch {}
+
+    const onClaimOffer = () => applyOfferToMessage();
+    window.addEventListener("bp:claim-offer", onClaimOffer);
+    return () => window.removeEventListener("bp:claim-offer", onClaimOffer);
+  }, [lang]);
 
   const triggerPasteFeedback = (field: string) => {
     setPastedField(field);
@@ -323,9 +353,16 @@ export function Contact() {
 
             {/* Right: Contact Form */}
             <div className="lg:col-span-7 rounded-2xl p-6 sm:p-8 bg-white/80 dark:bg-[#09090d]/85 border border-slate-200 dark:border-white/10 backdrop-blur-xl text-left shadow-lg">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-5">
-                {copy.formTitle}
-              </h3>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {copy.formTitle}
+                </h3>
+                {offerApplied && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime-400 text-slate-950 shadow-sm">
+                    🎁 SPECIAL OFFER: 20% OFF
+                  </span>
+                )}
+              </div>
 
               {sent ? (
                 <div className="py-10 text-center space-y-4">

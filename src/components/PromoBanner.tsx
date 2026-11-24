@@ -57,7 +57,16 @@ export function PromoBanner() {
         </div>
 
         <Link
-          href="/#contacto"
+          href="/?offer=20off#contacto"
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("bp:claim-offer"));
+              const el = document.getElementById("contacto");
+              if (el) {
+                setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 50);
+              }
+            }
+          }}
           className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-lime-400 hover:bg-lime-300 text-slate-950 font-bold text-xs shadow-sm transition-transform hover:scale-105 cursor-pointer"
         >
           <span>{isEs ? "Ver oferta" : "Claim offer"}</span>
