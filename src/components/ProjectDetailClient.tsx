@@ -80,9 +80,9 @@ export function ProjectDetailClient({ id }: { id: string }) {
             {/* Left Main Showcase (8 cols) */}
             <div className="lg:col-span-8 space-y-6">
               {/* Interactive Showcase + Centered Video Walkthrough for EVERY Project */}
-              {project.id === "widestep" ? (
-                <Pipeline />
-              ) : (
+              {project.id === "widestep" && <Pipeline />}
+
+              {project.id !== "widestep" && (
                 <div className="space-y-6">
                   {/* Centered Video Player Container */}
                   <div className="rounded-3xl border border-purple-500/25 bg-[#0c0c14] overflow-hidden p-5 sm:p-7 shadow-xl">
@@ -125,51 +125,73 @@ export function ProjectDetailClient({ id }: { id: string }) {
                       </video>
                     </div>
                   </div>
+                </div>
+              )}
 
-                  {/* Architecture & Technical Solution Card */}
-                  <div className="rounded-3xl p-6 sm:p-10 glass-card border border-slate-200 dark:border-white/10 space-y-6">
-                    <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse" />
-                        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                          {isEs ? "Arquitectura y Solución Técnica" : "Architecture & Technical Solution"}
-                        </h2>
-                      </div>
-                      <span className="text-xs font-mono text-purple-600 dark:text-purple-400">
-                        {project.format}
-                      </span>
-                    </div>
+              {/* 4-Step Case Study Breakdown for EVERY Project: El Reto -> Mi Solución -> Las Herramientas -> El Resultado */}
+              <div className="rounded-3xl p-6 sm:p-10 glass-card border border-slate-200 dark:border-white/10 space-y-6">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse" />
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                      {isEs
+                        ? "Caso de Estudio: Reto, Solución y Resultados"
+                        : "Case Study: Challenge, Solution & Results"}
+                    </h2>
+                  </div>
+                  <span className="text-xs font-mono text-purple-600 dark:text-purple-400">
+                    {project.format}
+                  </span>
+                </div>
 
-                    <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
+                    <span className="text-xs font-mono uppercase text-rose-600 dark:text-rose-400 font-semibold">
+                      {isEs ? "1. El Reto" : "1. The Challenge"}
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {project.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
+                    <span className="text-xs font-mono uppercase text-purple-600 dark:text-purple-400 font-semibold">
+                      {isEs ? "2. Mi Solución" : "2. My Solution"}
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                       {project.description}
                     </p>
+                  </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
-                        <span className="text-xs font-mono uppercase text-purple-600 dark:text-purple-400 font-semibold">
-                          {isEs ? "Enfoque del Proyecto" : "Project Focus"}
-                        </span>
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          {isEs
-                            ? "Diseñado y programado desde cero con foco en velocidad de carga, UX intuitiva y conversión directa."
-                            : "Designed and engineered from scratch focusing on load speed, intuitive UX, and direct conversion."}
-                        </p>
-                      </div>
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-3">
+                    <span className="text-xs font-mono uppercase text-indigo-600 dark:text-indigo-400 font-semibold">
+                      {isEs ? "3. Las Herramientas" : "3. The Tools"}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.stack.map((tech) => (
+                        <TechBadge key={tech} name={tech} size="sm" />
+                      ))}
+                    </div>
+                  </div>
 
-                      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
-                        <span className="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 font-semibold">
-                          {isEs ? "Entrega & Escalabilidad" : "Delivery & Scalability"}
-                        </span>
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          {isEs
-                            ? "Arquitectura modular con soporte multilenguaje, rendimiento optimizado y despliegue continuo."
-                            : "Modular architecture with multilingual support, optimized performance, and continuous deployment."}
-                        </p>
-                      </div>
+                  <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
+                    <span className="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 font-semibold">
+                      {isEs ? "4. El Resultado" : "4. The Result"}
+                    </span>
+                    <div className="space-y-1.5">
+                      {project.results.map((res) => (
+                        <div
+                          key={res}
+                          className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{res}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Right Sidebar (4 cols) */}

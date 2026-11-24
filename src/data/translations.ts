@@ -482,7 +482,7 @@ export function getFaqs(lang: Lang) {
     {
       question: "How do you guarantee uptime from Venezuela?",
       answer:
-        "I operate with dedicated redundant remote infrastructure: dual high-speed internet connections (fiber + mobile/satellite backup) and battery/inverter power backup to work without interruptions.",
+        "I have a mini-UPS & battery backup system, dual redundant internet providers (fiber optic + mobile/satellite), and I work 100% asynchronously to guarantee on-time delivery with zero interruptions.",
     },
     {
       question: "Do you work per project or hourly?",

@@ -47,8 +47,8 @@ export default function SobreMiPage() {
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
               {isEs
-                ? "Soy Brayan Pulido, ingeniero en automatización con IA y desarrollador Full-Stack desde La Victoria, Aragua (Venezuela). Llevo más de 6 años trabajando 100% remoto con startups, agencias y empresas B2B."
-                : "I'm Brayan Pulido, an AI Automation Engineer & Full-Stack Developer based in La Victoria, Aragua (Venezuela), with 6+ years working 100% remotely with B2B teams, startups, and agencies."}
+                ? "Soy Brayan Pulido, ingeniero en automatización con IA y desarrollador Full-Stack basado en Venezuela (Global Remote • GMT-4). Llevo más de 6 años trabajando 100% remoto con startups, agencias y empresas B2B."
+                : "I'm Brayan Pulido, an AI Automation Engineer & Full-Stack Developer based in Venezuela (Global Remote • EST), with 6+ years working 100% remotely with B2B teams, startups, and agencies."}
             </p>
           </div>
 

@@ -293,7 +293,7 @@ export const FAQS = [
   {
     question: "¿Cómo garantizas la continuidad operativa en Venezuela?",
     answer:
-      "Cuento con infraestructura redundante dedicada para trabajo remoto: doble conexión de internet de alta velocidad (fibra óptica + respaldo móvil/satelital) y sistema de respaldo eléctrico (inversor/baterías) que me permite operar sin interrupciones ni caídas.",
+      "Opero con un sistema de respaldo eléctrico (mini-UPS/baterías), doble proveedor de internet redundante (fibra óptica + respaldo móvil/satelital) y un flujo 100% asíncrono para entregar siempre a tiempo sin interrupciones.",
   },
   {
     question: "¿Trabajas por proyecto o por horas?",

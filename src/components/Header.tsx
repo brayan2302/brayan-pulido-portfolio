@@ -269,7 +269,7 @@ export function Header() {
             className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs sm:text-sm font-medium glass-card text-slate-800 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-300 border border-slate-200 dark:border-white/15 hover:border-purple-400/40 transition-all cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-            <span>{isEs ? "Agendar" : "Schedule"}</span>
+            <span>{isEs ? "Contáctame" : "Let's Talk"}</span>
           </Link>
 
           <a
