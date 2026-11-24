@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { CONTACT_INFO } from "@/data/portfolio";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import {
   isBotSubmission,
@@ -88,44 +87,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Send via Web3Forms to brayanelcrack2302@gmail.com
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-    if (accessKey) {
-      const w3Res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `[Portafolio] Nuevo lead: ${name} (${service})`,
-          from_name: name,
-          replyto: email,
-          email: CONTACT_INFO.email,
-          message: [
-            `Nombre: ${name}`,
-            `Email del contacto: ${email}`,
-            `Servicio: ${service}`,
-            `Mensaje:\n${message}`,
-          ].join("\n\n"),
-        }),
-      });
-
-      const w3Data = await w3Res.json().catch(() => ({}));
-      if (!w3Res.ok || w3Data?.success === false) {
-        await reportErrorByEmail({
-          source: "/api/contact (Web3Forms)",
-          error: new Error(`Web3Forms error ${w3Res.status}`),
-          details: { ip, w3Data },
-        });
-        return NextResponse.json(
-          { error: "No se pudo entregar el correo en este momento." },
-          { status: 502 }
-        );
-      }
-    }
-
     // Optional n8n webhook forwarding
     if (process.env.N8N_CONTACT_WEBHOOK_URL) {
       await fetch(process.env.N8N_CONTACT_WEBHOOK_URL, {
@@ -141,9 +102,21 @@ export async function POST(req: Request) {
       }).catch(() => {});
     }
 
+    // Web3Forms free tier blocks server-side Node.js requests (403 Cloudflare).
+    // Return the public access key after passing server-side reCAPTCHA, rate-limit & validation
+    // so the browser submits directly to Web3Forms.
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || null;
+
     return NextResponse.json({
       ok: true,
-      deliveredVia: accessKey ? "web3forms" : "local-validated",
+      deliveredVia: accessKey ? "web3forms-client" : "validated",
+      web3formsAccessKey: accessKey,
+      sanitized: {
+        name,
+        email,
+        service,
+        message,
+      },
     });
   } catch (err) {
     await reportErrorByEmail({

@@ -90,6 +90,44 @@ export function Contact() {
         return;
       }
 
+      // Enviar el correo directamente desde el navegador a Web3Forms
+      // (evita el bloqueo Cloudflare 403 de Web3Forms hacia servidores Node.js)
+      if (data?.web3formsAccessKey) {
+        const clean = data.sanitized || { name, email, service, message };
+        const w3Res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: data.web3formsAccessKey,
+            subject: `[Portafolio] Nuevo lead: ${clean.name} (${clean.service})`,
+            from_name: clean.name,
+            name: clean.name,
+            email: clean.email,
+            replyto: clean.email,
+            message: [
+              `Nombre: ${clean.name}`,
+              `Email del contacto: ${clean.email}`,
+              `Servicio: ${clean.service}`,
+              `Mensaje:\n${clean.message}`,
+            ].join("\n\n"),
+          }),
+        });
+
+        const w3Data = await w3Res.json().catch(() => ({}));
+        if (!w3Res.ok || w3Data?.success === false) {
+          setError(
+            w3Data?.message ||
+              (lang === "es"
+                ? "No se pudo entregar el correo en este momento. Intenta por WhatsApp."
+                : "Could not deliver the email right now. Please try WhatsApp.")
+          );
+          return;
+        }
+      }
+
       setSent(true);
       setName("");
       setEmail("");
