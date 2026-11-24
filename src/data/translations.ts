@@ -13,7 +13,7 @@ export const UI_COPY = {
     nav: [
       { label: "Trabajos", href: "/#trabajos" },
       { label: "Servicios", href: "/#servicios" },
-      { label: "Sobre mí", href: "/#sobre-mi" },
+      { label: "Sobre mí", href: "/sobre-mi" },
       { label: "FAQ", href: "/#faq" },
       { label: "Contacto", href: "/#contacto" },
     ],
@@ -159,7 +159,7 @@ export const UI_COPY = {
     nav: [
       { label: "Work", href: "/#trabajos" },
       { label: "Services", href: "/#servicios" },
-      { label: "About", href: "/#sobre-mi" },
+      { label: "About", href: "/sobre-mi" },
       { label: "FAQ", href: "/#faq" },
       { label: "Contact", href: "/#contacto" },
     ],

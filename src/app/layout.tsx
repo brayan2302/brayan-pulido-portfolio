@@ -183,8 +183,7 @@ const PREFS_DETECTION_SCRIPT = `
 (function() {
   try {
     var storedTheme = window.localStorage.getItem('bp_theme');
-    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = (storedTheme === 'light' || storedTheme === 'dark') ? storedTheme : (systemDark ? 'dark' : 'light');
+    var theme = (storedTheme === 'light' || storedTheme === 'dark') ? storedTheme : 'light';
     var root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);

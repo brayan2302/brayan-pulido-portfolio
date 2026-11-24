@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Globe2, Wifi } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, Globe2, Wifi, ArrowUpRight, Award } from "lucide-react";
 import { TECH_STACK_ITEMS } from "@/data/portfolio";
 import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY } from "@/data/translations";
@@ -62,6 +63,21 @@ export function AboutAndStack() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link
+                href="/sobre-mi"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-[0_0_24px_rgba(139,92,246,0.3)] transition-all cursor-pointer"
+              >
+                <Award className="w-4 h-4" />
+                <span>
+                  {lang === "es"
+                    ? "Ver historia, visión y certificaciones"
+                    : "View story, vision & certifications"}
+                </span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 

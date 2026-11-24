@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Hash } from "lucide-react";
+import { Star } from "lucide-react";
+import { CLIENTS_SOCIAL_PROOF } from "@/data/portfolio";
 import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY, getTestimonials } from "@/data/translations";
 import { TextReveal } from "./TextReveal";
@@ -11,10 +12,14 @@ export function Testimonials() {
   const { lang } = usePreferences();
   const copy = UI_COPY[lang].testimonials;
   const testimonials = getTestimonials(lang);
+  const isEs = lang === "es";
+
+  const rotations = ["md:-rotate-1", "md:translate-y-3 md:rotate-1", "md:-rotate-1"];
 
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative py-20 sm:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header: 04 / Testimonios — Lo que dicen los equipos. */}
         <div className="max-w-2xl mb-14">
           <span className="text-xs font-mono uppercase tracking-widest text-purple-600 dark:text-purple-400 font-semibold mb-3 inline-block">
             {copy.badge}
@@ -29,50 +34,93 @@ export function Testimonials() {
           </TextReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((item) => (
+        {/* Floating Cards Showcase (5-star reviews style) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8">
+          {testimonials.map((item, idx) => (
             <article
               key={item.id}
-              className="rounded-2xl p-6 glass-card glass-card-hover flex flex-col justify-between"
+              className={`rounded-2xl p-6 bg-white dark:bg-[#0e0e14] border border-slate-200/90 dark:border-white/10 shadow-[0_12px_35px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_35px_rgba(0,0,0,0.45)] hover:rotate-0 hover:-translate-y-1 hover:border-purple-400/50 transition-all duration-300 flex flex-col justify-between ${
+                rotations[idx % rotations.length]
+              }`}
             >
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 pb-4 mb-5 border-b border-slate-200 dark:border-white/10">
-                  <span className="inline-flex items-center gap-1 text-purple-700 dark:text-purple-300">
-                    <Hash className="w-3.5 h-3.5" />
-                    {item.channel.replace(/^#/, "")}
-                  </span>
-                  <span>{item.time}</span>
+                {/* Author Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${item.avatarGradient} flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-sm`}
+                  >
+                    {item.avatarInitials}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-slate-900 dark:text-white text-sm truncate">
+                        {item.author}
+                      </span>
+                      <CircleFlag
+                        countryCode={item.countryCode || "un"}
+                        size={15}
+                        title={item.country}
+                      />
+                    </div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                      {item.role}
+                    </p>
+                  </div>
                 </div>
 
-                <p className="text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                {/* 5 Purple Stars */}
+                <div className="flex items-center gap-1 mb-3" aria-label="5 de 5 estrellas">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star
+                      key={s}
+                      className="w-4 h-4 fill-purple-600 text-purple-600 dark:fill-purple-400 dark:text-purple-400"
+                    />
+                  ))}
+                </div>
+
+                <p className="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
                   &ldquo;{item.quote}&rdquo;
                 </p>
               </div>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/10">
-                <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br ${item.avatarGradient} flex items-center justify-center text-xs font-bold text-white shrink-0`}
-                >
-                  {item.avatarInitials}
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-semibold text-slate-900 dark:text-white text-sm truncate">
-                      {item.author}
-                    </span>
-                    <CircleFlag
-                      countryCode={item.countryCode || "un"}
-                      size={15}
-                      title={item.country}
-                    />
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                    {item.role}
-                  </p>
-                </div>
-              </div>
             </article>
           ))}
+        </div>
+
+        {/* Brand / Client Logos Strip right below testimonials */}
+        <div className="mt-14 pt-10 border-t border-slate-200 dark:border-white/10">
+          <p className="text-center text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-8">
+            {isEs
+              ? "Marcas y equipos que han confiado en mi trabajo"
+              : "Brands & teams that have trusted my work"}
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+            {CLIENTS_SOCIAL_PROOF.map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={brand.name}
+                className="group flex items-center gap-3 opacity-65 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-slate-200 dark:border-white/15 bg-white shadow-sm shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="text-base sm:text-lg font-bold tracking-tight text-slate-600 dark:text-slate-300 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
+                  {brand.name}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

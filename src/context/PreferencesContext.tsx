@@ -42,16 +42,14 @@ function applyThemeToDom(nextTheme: Theme) {
 }
 
 function detectSystemTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   try {
     const stored = window.localStorage.getItem("bp_theme") as Theme | null;
     if (stored === "light" || stored === "dark") return stored;
     if (window.__INITIAL_PREFS__?.theme) return window.__INITIAL_PREFS__.theme;
-    return window.matchMedia?.("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return "light";
   } catch {
-    return "dark";
+    return "light";
   }
 }
 
@@ -73,7 +71,7 @@ function detectSystemLang(): Lang {
 }
 
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [lang, setLangState] = useState<Lang>("es");
   const [isReady, setIsReady] = useState<boolean>(false);
 

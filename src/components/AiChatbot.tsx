@@ -160,11 +160,10 @@ export function AiChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.94 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className={`overflow-hidden border border-purple-500/30 bg-white/95 dark:bg-[#0b0b10]/95 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.28)] dark:shadow-[0_16px_50px_rgba(0,0,0,0.7)] flex flex-col transition-all duration-300 ${
-              expanded
-                ? "fixed inset-3 sm:inset-6 z-[9999] w-auto h-auto max-h-none rounded-3xl"
-                : "mb-3 w-[calc(100vw-1.5rem)] sm:w-[410px] max-h-[82dvh] rounded-2xl"
-            }`}
+            className={`overflow-hidden border border-purple-500/30 bg-white/95 dark:bg-[#0b0b10]/95 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.28)] dark:shadow-[0_16px_50px_rgba(0,0,0,0.7)] flex flex-col transition-all duration-300 ${expanded
+              ? "fixed inset-3 sm:inset-6 z-[9999] w-auto h-auto max-h-none rounded-3xl"
+              : "mb-3 w-[calc(100vw-1.5rem)] sm:w-[410px] max-h-[82dvh] rounded-2xl"
+              }`}
           >
             {/* Header */}
             <div className="px-4 py-3.5 bg-gradient-to-r from-purple-600/15 via-violet-600/10 to-indigo-600/15 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-2 shrink-0">
@@ -225,9 +224,8 @@ export function AiChatbot() {
             {/* Messages */}
             <div
               ref={scrollRef}
-              className={`p-4 flex-1 overflow-y-auto space-y-3 text-sm ${
-                expanded ? "min-h-[380px]" : "min-h-[260px] max-h-[380px]"
-              }`}
+              className={`p-4 flex-1 overflow-y-auto space-y-3 text-sm ${expanded ? "min-h-[380px]" : "min-h-[260px] max-h-[380px]"
+                }`}
             >
               {/* Welcome message */}
               <motion.div

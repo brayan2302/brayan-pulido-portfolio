@@ -18,6 +18,7 @@ import { CONTACT_INFO } from "@/data/portfolio";
 import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY } from "@/data/translations";
 import { CircleFlag } from "./CircleFlag";
+import { PromoBanner } from "./PromoBanner";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,13 +71,15 @@ export function Header() {
   };
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "py-3 bg-white/85 dark:bg-[#050505]/85 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "py-5 bg-transparent"
-      }`}
-    >
+    <div className="fixed top-0 inset-x-0 z-50 flex flex-col">
+      <PromoBanner />
+      <header
+        className={`w-full transition-all duration-300 ${
+          scrolled
+            ? "py-3 bg-white/85 dark:bg-[#050505]/85 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "py-4 bg-transparent"
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
         {/* Left: Typographic Logo */}
         <Link
@@ -323,6 +326,7 @@ export function Header() {
           </a>
         </div>
       )}
-    </header>
+      </header>
+    </div>
   );
 }
