@@ -206,7 +206,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="es" className="antialiased" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: PREFS_DETECTION_SCRIPT }} />
         <link rel="preconnect" href="https://fonts.cdnfonts.com" crossOrigin="anonymous" />

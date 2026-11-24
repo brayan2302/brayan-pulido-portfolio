@@ -6,37 +6,36 @@ import { ArrowUpRight, CheckCircle2, Sparkles, Workflow, Zap } from "lucide-reac
 import { CLIENTS_SOCIAL_PROOF, CONTACT_INFO } from "@/data/portfolio";
 import { usePreferences } from "@/context/PreferencesContext";
 import { UI_COPY, getBentoProjects } from "@/data/translations";
-import { TechBadge } from "./TechBadge";
 import { TextReveal } from "./TextReveal";
 
-function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
+function ProjectCardVisual({ id, isEs }: { id: string; isEs: boolean }) {
   if (id === "widestep") {
     return (
-      <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
-        <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-emerald-500/30 shadow-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center text-[10px] font-bold">
-              AI
+      <div className="w-full max-w-[260px] space-y-2 -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+        <div className="p-3 rounded-xl bg-white dark:bg-[#14141e] border border-slate-200/90 dark:border-white/15 shadow-md flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+              n8n
             </span>
-            <div>
-              <p className="text-[11px] font-semibold text-slate-900 dark:text-white leading-tight">
-                Listicle #1042 &bull; WideStep
+            <div className="min-w-0">
+              <p className="text-[11px] font-bold text-slate-900 dark:text-white truncate">
+                Listicle #1042
               </p>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                n8n &rarr; UTF-8 Buffer &rarr; Storage
+              <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                JSON &rarr; UTF-8 HTML
               </p>
             </div>
           </div>
-          <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
-            {isEs ? "Completado ✓" : "Completed ✓"}
+          <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold shrink-0">
+            {isEs ? "Listo ✓" : "Done ✓"}
           </span>
         </div>
-        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#14141c]/70 border border-slate-200/70 dark:border-white/10">
-          <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300">
-            /api/preview &bull; Proxy CORS
+        <div className="ml-4 px-3 py-1.5 rounded-lg bg-white/95 dark:bg-[#14141e]/90 border border-emerald-500/35 shadow-sm flex items-center justify-between">
+          <span className="text-[10px] font-medium text-slate-700 dark:text-slate-300">
+            /api/preview &bull; Proxy
           </span>
-          <span className="px-2 py-0.5 rounded-md bg-purple-500/15 text-purple-700 dark:text-purple-300 text-[10px] font-semibold">
-            Live
+          <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+            200 OK
           </span>
         </div>
       </div>
@@ -45,24 +44,24 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
 
   if (id === "kimmon") {
     return (
-      <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
-        <div className="flex flex-wrap gap-1.5">
-          {["Figma UI", "Next.js", "LinkedIn B2B", "Framer"].map((chip) => (
+      <div className="w-full max-w-[260px] space-y-2 rotate-1 group-hover:rotate-0 transition-transform duration-300">
+        <div className="flex flex-wrap gap-1.5 justify-center">
+          {["Figma UI", "Next.js", "LinkedIn B2B"].map((chip) => (
             <span
               key={chip}
-              className="px-2 py-0.5 rounded-md bg-white dark:bg-[#14141c] border border-slate-200 dark:border-white/10 text-[10px] font-medium text-slate-700 dark:text-slate-300"
+              className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#14141e] border border-slate-200 dark:border-white/15 shadow-xs text-[10px] font-semibold text-slate-700 dark:text-slate-200"
             >
               {chip}
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-emerald-500/30 shadow-xs">
+        <div className="p-3 rounded-xl bg-white dark:bg-[#14141e] border border-emerald-500/35 shadow-md flex items-center justify-between">
           <div>
             <p className="text-[11px] font-bold text-slate-900 dark:text-white">
               {isEs ? "Conversión B2B +42%" : "B2B Conversion +42%"}
             </p>
             <p className="text-[10px] text-slate-500 dark:text-slate-400">
-              {isEs ? "Flujo optimizado en LinkedIn" : "Optimized LinkedIn funnel"}
+              {isEs ? "Prospección automatizada" : "Automated outreach"}
             </p>
           </div>
           <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
@@ -75,16 +74,16 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
 
   if (id === "creandovisual") {
     return (
-      <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
-        <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-purple-500/25 shadow-xs">
+      <div className="w-full max-w-[260px] space-y-2 -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+        <div className="p-3 rounded-xl bg-white dark:bg-[#14141e] border border-purple-400/30 shadow-md flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
             <div>
               <p className="text-[11px] font-bold text-slate-900 dark:text-white">
-                99 Lighthouse Performance
+                99 Lighthouse Score
               </p>
               <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                ImageKit CDN &bull; WebP/AVIF
+                ImageKit CDN &bull; AVIF
               </p>
             </div>
           </div>
@@ -92,9 +91,9 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
             Fast
           </span>
         </div>
-        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#14141c]/70 border border-emerald-500/30">
-          <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300">
-            {isEs ? "Cita directa por WhatsApp" : "Direct WhatsApp booking"}
+        <div className="mr-4 px-3 py-1.5 rounded-lg bg-white/95 dark:bg-[#14141e]/90 border border-emerald-500/35 shadow-sm flex items-center justify-between">
+          <span className="text-[10px] font-medium text-slate-700 dark:text-slate-300">
+            {isEs ? "Agenda directa WhatsApp" : "Direct WhatsApp booking"}
           </span>
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
         </div>
@@ -104,24 +103,24 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
 
   if (id === "reels-tiktok") {
     return (
-      <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
+      <div className="w-full max-w-[260px] space-y-2 rotate-1 group-hover:rotate-0 transition-transform duration-300">
         <div className="grid grid-cols-4 gap-1.5 text-center">
-          {["0:03 Hook", "B-Roll", "SFX", "CTA"].map((step, i) => (
+          {["0:03", "B-Roll", "SFX", "CTA"].map((step, i) => (
             <div
               key={step}
-              className={`py-1.5 rounded-lg text-[10px] font-bold ${
+              className={`py-1.5 rounded-lg text-[10px] font-bold shadow-xs ${
                 i === 0
                   ? "bg-purple-600 text-white"
-                  : "bg-white dark:bg-[#14141c] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10"
+                  : "bg-white dark:bg-[#14141e] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/15"
               }`}
             >
               {step}
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-emerald-500/30">
-          <span className="text-[11px] font-semibold text-slate-900 dark:text-white">
-            {isEs ? "Retención inicial 3s" : "3s Initial Retention"}
+        <div className="p-2.5 rounded-xl bg-white dark:bg-[#14141e] border border-emerald-500/35 shadow-md flex items-center justify-between">
+          <span className="text-[11px] font-bold text-slate-900 dark:text-white">
+            {isEs ? "Retención 3 primeros seg." : "First 3s Retention"}
           </span>
           <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
             High CTR ✓
@@ -133,21 +132,21 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
 
   if (id === "n8n-flows") {
     return (
-      <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
-        <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-purple-500/25">
+      <div className="w-full max-w-[260px] space-y-2 -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+        <div className="p-3 rounded-xl bg-white dark:bg-[#14141e] border border-purple-400/30 shadow-md flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Workflow className="w-4 h-4 text-[#ea4b71]" />
-            <span className="text-[11px] font-semibold text-slate-900 dark:text-white">
-              WhatsApp &rarr; OpenAI &rarr; CRM
+            <Workflow className="w-4 h-4 text-[#ea4b71] shrink-0" />
+            <span className="text-[11px] font-bold text-slate-900 dark:text-white">
+              WhatsApp &rarr; OpenAI
             </span>
           </div>
           <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
             &lt; 10s ✓
           </span>
         </div>
-        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#14141c]/70 border border-slate-200 dark:border-white/10">
-          <span className="text-[11px] text-slate-600 dark:text-slate-300">
-            {isEs ? "Calificación automática 24/7" : "24/7 Auto-Qualification"}
+        <div className="ml-4 px-3 py-1.5 rounded-lg bg-white/95 dark:bg-[#14141e]/90 border border-slate-200 dark:border-white/15 shadow-sm flex items-center justify-between">
+          <span className="text-[10px] font-medium text-slate-700 dark:text-slate-300">
+            {isEs ? "Sync CRM automático 24/7" : "24/7 Auto CRM Sync"}
           </span>
           <Zap className="w-3.5 h-3.5 text-amber-500" />
         </div>
@@ -156,20 +155,20 @@ function ProjectMiniPreview({ id, isEs }: { id: string; isEs: boolean }) {
   }
 
   return (
-    <div className="mb-5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 space-y-2">
-      <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#14141c] border border-purple-500/25">
+    <div className="w-full max-w-[260px] space-y-2 rotate-1 group-hover:rotate-0 transition-transform duration-300">
+      <div className="p-3 rounded-xl bg-white dark:bg-[#14141e] border border-purple-400/30 shadow-md flex items-center justify-between">
         <span className="text-[11px] font-bold text-slate-900 dark:text-white">
-          Next.js 16 + Framer Motion
+          Next.js 16 + Motion
         </span>
         <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
           60 FPS ✓
         </span>
       </div>
-      <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#14141c]/70 border border-slate-200 dark:border-white/10">
-        <span className="text-[11px] text-slate-600 dark:text-slate-300">
+      <div className="mr-4 px-3 py-1.5 rounded-lg bg-white/95 dark:bg-[#14141e]/90 border border-slate-200 dark:border-white/15 shadow-sm flex items-center justify-between">
+        <span className="text-[10px] font-medium text-slate-700 dark:text-slate-300">
           {isEs ? "UI Modular & Dark Mode" : "Modular UI & Dark Mode"}
         </span>
-        <span className="text-[10px] font-mono text-purple-600 dark:text-purple-400">
+        <span className="text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400">
           Ready
         </span>
       </div>
@@ -223,7 +222,7 @@ export function BentoProjects() {
           </div>
         </div>
 
-        {/* Section Header (clean, no 01 / prefix) */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <TextReveal>
@@ -250,41 +249,40 @@ export function BentoProjects() {
           </a>
         </div>
 
-        {/* Uniform 3-Column Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Clean SaaS-Style Cards Grid (Visual Top Box + Uppercase Category + Title + Desc + Pill CTA) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <Link
               key={project.id}
               href={`/proyectos/${project.id}`}
-              className="group relative text-left rounded-2xl p-6 glass-card glass-card-hover border border-slate-200 dark:border-white/10 overflow-hidden flex flex-col justify-between cursor-pointer"
+              className="group rounded-3xl bg-white dark:bg-[#0e0e14] border border-slate-200/90 dark:border-white/10 shadow-[0_8px_30px_rgba(15,23,42,0.04)] dark:shadow-none hover:shadow-[0_16px_40px_rgba(139,92,246,0.12)] hover:border-purple-400/50 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer"
             >
-              <div className="relative z-10 w-full">
-                {/* Mini Visual UI Preview */}
-                <ProjectMiniPreview id={project.id} isEs={isEs} />
-
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-[11px] font-mono text-purple-700 dark:text-purple-300 font-semibold">
-                    {project.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-mono text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
-                    {isEs ? "Ver caso" : "View case"}
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-
-                <h3 className="font-bold text-xl text-slate-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-slate-600 dark:text-slate-300/90 text-sm leading-relaxed mb-5">
-                  {project.subtitle}
-                </p>
+              {/* Soft Purple Top Visual Container */}
+              <div className="h-44 sm:h-48 px-5 py-4 bg-gradient-to-br from-purple-100/90 via-violet-50 to-indigo-100/60 dark:from-purple-950/50 dark:via-[#141422] dark:to-indigo-950/40 flex items-center justify-center border-b border-slate-100 dark:border-white/10 overflow-hidden">
+                <ProjectCardVisual id={project.id} isEs={isEs} />
               </div>
 
-              <div className="relative z-10 pt-4 border-t border-slate-200 dark:border-white/10 w-full flex flex-wrap gap-1.5">
-                {project.stack.slice(0, 4).map((tech) => (
-                  <TechBadge key={tech} name={tech} size="sm" />
-                ))}
+              {/* Bottom Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="block text-[11px] font-mono uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-2">
+                    {project.category}
+                  </span>
+
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-snug mb-2.5 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                <div>
+                  <span className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium border border-slate-300 dark:border-white/15 text-slate-800 dark:text-slate-200 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition-all">
+                    {isEs ? "ver cómo funciona" : "see how it works"}
+                  </span>
+                </div>
               </div>
             </Link>
           ))}

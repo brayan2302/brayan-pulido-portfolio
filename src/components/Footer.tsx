@@ -11,7 +11,6 @@ import MicroSlats from "./MicroSlats";
 export function Footer() {
   const { lang, theme } = usePreferences();
   const copy = UI_COPY[lang].footer;
-  const isEs = lang === "es";
 
   return (
     <footer className="relative border-t border-slate-200 dark:border-white/10 bg-[#f8fafc] dark:bg-[#09090d] text-slate-700 dark:text-slate-300 pt-10 pb-8 overflow-hidden">
@@ -38,11 +37,8 @@ export function Footer() {
 
           {/* Subtle Center Emblem Overlay (pointer-events-none so cursor interacts with MicroSlats) */}
           <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center px-4 text-center">
-            <div className="px-5 py-2.5 rounded-2xl bg-black/45 backdrop-blur-md border border-white/10 shadow-xl">
-              <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-purple-300">
-                {isEs ? "Mueve el cursor para interactuar" : "Move cursor to interact"}
-              </p>
-              <p className="text-lg sm:text-2xl font-bold text-white mt-0.5 tracking-tight">
+            <div className="px-6 py-3 rounded-2xl bg-black/45 backdrop-blur-md border border-white/10 shadow-xl">
+              <p className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                 AI AUTOMATION &amp; FULLSTACK
               </p>
             </div>
