@@ -139,17 +139,17 @@ export const UI_COPY = {
       title: "Asistente de Brayan",
       online: "En línea",
       poweredBy: "Powered by DeepSeek",
-      launcherCallout: "Alguna Pregunta",
+      launcherCallout: "¿Alguna pregunta?",
       resetChat: "Reiniciar chat",
       deleteMessage: "Eliminar mensaje",
       emojiLabel: "Agregar emoji",
-      placeholder: "Escribe tu pregunta...",
+      placeholder: "Pregúntame lo que necesites...",
       welcome:
-        "¡Hola! Soy el asistente IA de Brayan Pulido. ¿En qué puedo ayudarte hoy? Puedo contarte sobre automatizaciones con n8n, desarrollo en Next.js, casos de éxito o cómo cotizar.",
+        "¡Hola! 👋 Soy el asistente IA de Brayan. Cuéntame qué proceso quieres automatizar o qué web necesitas lanzar y te ayudo al instante.",
       quickPrompts: [
-        "¿Qué servicios ofrece?",
-        "Cuéntame del caso WideStep",
-        "¿Cómo cotizar un proyecto?",
+        "¿Cómo automatizas con n8n?",
+        "Ver caso WideStep",
+        "Cotizar un proyecto",
       ],
       errorReply:
         "Hubo un problema al conectar con el asistente. Puedes escribir directo por WhatsApp o usar el formulario de contacto.",
@@ -289,13 +289,13 @@ export const UI_COPY = {
       resetChat: "Reset chat",
       deleteMessage: "Delete message",
       emojiLabel: "Add emoji",
-      placeholder: "Type your question...",
+      placeholder: "Ask me anything...",
       welcome:
-        "Hi! I'm Brayan Pulido's AI assistant. How can I help you today? Ask me about n8n automations, Next.js builds, case studies, or how to request a quote.",
+        "Hi there! 👋 I'm Brayan's AI assistant. Tell me which workflow you want to automate or what web app you'd like to launch, and I'll guide you right away.",
       quickPrompts: [
-        "What services do you offer?",
-        "Tell me about WideStep",
-        "How do I request a quote?",
+        "How do you automate with n8n?",
+        "WideStep case study",
+        "Request a quote",
       ],
       errorReply:
         "Couldn't reach the assistant right now. Feel free to message via WhatsApp or the contact form.",

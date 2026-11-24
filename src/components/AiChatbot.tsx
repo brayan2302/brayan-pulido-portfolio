@@ -168,8 +168,15 @@ export function AiChatbot() {
             {/* Header */}
             <div className="px-4 py-3.5 bg-gradient-to-r from-purple-600/15 via-violet-600/10 to-indigo-600/15 border-b border-slate-200 dark:border-white/10 flex items-center justify-between gap-2 shrink-0">
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-[0_0_16px_rgba(139,92,246,0.45)] shrink-0">
-                  <Bot className="w-4 h-4" />
+                <div className="relative w-9 h-9 rounded-full shadow-[0_0_16px_rgba(139,92,246,0.35)] shrink-0 ring-2 ring-purple-500/35">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://media.licdn.com/dms/image/v2/D4E03AQH6BCzDrTr0zA/profile-displayphoto-crop_800_800/B4EZ4FKOr5HQAI-/0/1778203029773?e=1796860800&v=beta&t=ha_E1Np4h279BtpFR5xNriUsx6eta1ZvjDR0KJ84794"
+                    alt="Brayan Pulido"
+                    width={36}
+                    height={36}
+                    className="w-full h-full rounded-full object-cover"
+                  />
                   <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-[#0b0b10]" />
                 </div>
                 <div className="min-w-0">
@@ -182,7 +189,17 @@ export function AiChatbot() {
                       {copy.online}
                     </span>
                     <span className="text-slate-400">•</span>
-                    <span className="truncate">{copy.poweredBy}</span>
+                    <span className="inline-flex items-center gap-1 truncate">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-avatar/avatars/deepseek.webp"
+                        alt="DeepSeek"
+                        width={14}
+                        height={14}
+                        className="w-3.5 h-3.5 rounded-full object-cover shrink-0"
+                      />
+                      <span className="truncate">{copy.poweredBy}</span>
+                    </span>
                   </div>
                 </div>
               </div>

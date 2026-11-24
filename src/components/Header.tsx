@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Terminal,
   Menu,
   X,
   ArrowUpRight,
@@ -81,13 +80,20 @@ export function Header() {
         }`}
       >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
-        {/* Left: Typographic Logo */}
+        {/* Left: Profile Photo Logo */}
         <Link
           href="/"
           className="flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
-          <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-700 text-white shadow-[0_0_20px_rgba(168,85,247,0.45)] group-hover:scale-105 transition-transform">
-            <Terminal className="w-4 h-4" />
+          <span className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.3)] group-hover:scale-105 transition-transform shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4E03AQH6BCzDrTr0zA/profile-displayphoto-crop_800_800/B4EZ4FKOr5HQAI-/0/1778203029773?e=1796860800&v=beta&t=ha_E1Np4h279BtpFR5xNriUsx6eta1ZvjDR0KJ84794"
+              alt="Brayan Pulido"
+              width={36}
+              height={36}
+              className="w-full h-full object-cover"
+            />
           </span>
           <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
             Brayan Pulido
