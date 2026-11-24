@@ -270,9 +270,17 @@ export function Header() {
             href={CONTACT_INFO.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 border border-purple-400/30 shadow-[0_0_24px_rgba(139,92,246,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.55)] transition-all cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 border border-purple-400/30 shadow-[0_0_24px_rgba(139,92,246,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.55)] transition-all cursor-pointer"
           >
-            {copy.headerCta}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://whataform.com/assets/website/images/media/whatsapp-whataform-logo.png"
+              alt="WhatsApp"
+              width={18}
+              height={18}
+              className="w-4 h-4 object-contain shrink-0"
+            />
+            <span>{copy.headerCta}</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
 
@@ -321,7 +329,15 @@ export function Header() {
             onClick={() => setMobileOpen(false)}
             className="flex items-center justify-center gap-2 w-full mt-2 px-4 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-violet-600 shadow-[0_0_20px_rgba(139,92,246,0.4)]"
           >
-            {copy.headerCta}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://whataform.com/assets/website/images/media/whatsapp-whataform-logo.png"
+              alt="WhatsApp"
+              width={18}
+              height={18}
+              className="w-4 h-4 object-contain shrink-0"
+            />
+            <span>{copy.headerCta}</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>

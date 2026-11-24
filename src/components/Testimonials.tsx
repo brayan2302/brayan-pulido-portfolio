@@ -42,9 +42,21 @@ export function Testimonials() {
                 {/* Author Header */}
                 <div className="flex items-center gap-3 mb-4">
                   <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${item.avatarGradient} flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-sm`}
+                    className={`w-11 h-11 rounded-full bg-gradient-to-br ${item.avatarGradient} flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-sm overflow-hidden border border-slate-200 dark:border-white/15`}
                   >
-                    {item.avatarInitials}
+                    {"avatarUrl" in item && item.avatarUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={item.avatarUrl}
+                        alt={item.author}
+                        width={44}
+                        height={44}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      item.avatarInitials
+                    )}
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">

@@ -247,6 +247,7 @@ export const TESTIMONIALS = [
     channel: "#widestep-mvp",
     time: "10:42 AM",
     avatarInitials: "CM",
+    avatarUrl: "https://whataform.com/assets/web-site/images/testimonios/italo-leiva.webp",
     avatarGradient: "from-purple-500 to-indigo-600",
     quote:
       "Brayan resolvió en semanas lo que nos habría tomado meses con una agencia tradicional. Conectó nuestro panel en Supabase con flujos en n8n y la operación pasó a correr sola. Autonomía total y entregas impecables.",
@@ -261,6 +262,7 @@ export const TESTIMONIALS = [
     channel: "#producto-b2b",
     time: "04:15 PM",
     avatarInitials: "LR",
+    avatarUrl: "https://whataform.com/assets/web-site/images/testimonios/daniela-jijon.webp",
     avatarGradient: "from-fuchsia-500 to-purple-600",
     quote:
       "Su perfil híbrido es oro puro: entiende tanto de UI/UX como de código y automatización. Nos ayudó a elevar la estética B2B para LinkedIn con una velocidad de ejecución impresionante.",
@@ -275,6 +277,7 @@ export const TESTIMONIALS = [
     channel: "#lanzamientos",
     time: "06:30 PM",
     avatarInitials: "AV",
+    avatarUrl: "https://whataform.com/assets/web-site/images/testimonios/markafacil.webp",
     avatarGradient: "from-violet-500 to-blue-600",
     quote:
       "Trabajar con Brayan de forma asíncrona es súper fluido. Siempre responde a tiempo, propone mejoras técnicas que no habíamos pensado y la landing quedó volando en rendimiento y diseño.",
