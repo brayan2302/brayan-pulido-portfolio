@@ -38,10 +38,6 @@ export default function SobreMiPage() {
               <span>{isEs ? "Volver al inicio" : "Back to home"}</span>
             </Link>
 
-            <span className="block text-xs font-mono uppercase tracking-widest text-purple-600 dark:text-purple-400 font-semibold mb-3">
-              {isEs ? "01 / Perfil Profesional" : "01 / Professional Profile"}
-            </span>
-
             <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
               {isEs ? "Quién soy, qué busco y " : "Who I am, what I want & "}
               <span className="bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
@@ -105,9 +101,6 @@ export default function SobreMiPage() {
           <section className="rounded-3xl p-6 sm:p-10 glass-card border border-purple-500/25 shadow-xl space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-purple-600 dark:text-purple-400 font-semibold mb-1.5 inline-block">
-                  {isEs ? "02 / Credenciales Verificadas" : "02 / Verified Credentials"}
-                </span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
                   <Award className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   <span>
@@ -190,9 +183,9 @@ export default function SobreMiPage() {
 
           {/* Stack Técnico */}
           <section className="space-y-5">
-            <span className="text-xs font-mono uppercase tracking-widest text-purple-600 dark:text-purple-400 font-semibold">
-              {isEs ? "03 / Herramientas & Stack" : "03 / Tools & Stack"}
-            </span>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+              {isEs ? "Herramientas & Stack" : "Tools & Stack"}
+            </h2>
             <div className="flex flex-wrap gap-2.5">
               {TECH_STACK_ITEMS.map((item) => (
                 <TechBadge key={item.name} name={item.name} size="md" />

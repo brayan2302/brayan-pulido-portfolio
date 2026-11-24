@@ -148,10 +148,6 @@ export function Contact() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Left: Direct Info & CTAs */}
             <div className="lg:col-span-5 text-left">
-              <span className="text-xs font-mono uppercase tracking-widest text-purple-600 dark:text-purple-400 font-semibold mb-3 inline-block">
-                {copy.badge}
-              </span>
-
               <TextReveal>
                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
                   {copy.titleStart}{" "}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Sparkles, Video } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TechBadge } from "@/components/TechBadge";
@@ -79,47 +79,93 @@ export function ProjectDetailClient({ id }: { id: string }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Main Showcase (8 cols) */}
             <div className="lg:col-span-8 space-y-6">
+              {/* Interactive Showcase + Centered Video Walkthrough for EVERY Project */}
               {project.id === "widestep" ? (
                 <Pipeline />
               ) : (
-                <div className="rounded-3xl p-6 sm:p-10 glass-card border border-slate-200 dark:border-white/10 space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse" />
-                      <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                        {isEs ? "Arquitectura y Solución Técnica" : "Architecture & Technical Solution"}
-                      </h2>
+                <div className="space-y-6">
+                  {/* Centered Video Player Container */}
+                  <div className="rounded-3xl border border-purple-500/25 bg-[#0c0c14] overflow-hidden p-5 sm:p-7 shadow-xl">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-white/10">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400">
+                          <Video className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <h2 className="font-bold text-sm sm:text-base text-white">
+                            {isEs
+                              ? `Video Demo: ${project.title}`
+                              : `Video Walkthrough: ${project.title}`}
+                          </h2>
+                          <p className="text-xs text-slate-400">
+                            {isEs
+                              ? "Explicación técnica y recorrido en vivo por Brayan Pulido"
+                              : "Technical walkthrough & live demo by Brayan Pulido"}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 self-start sm:self-auto">
+                        ImageKit CDN
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-purple-600 dark:text-purple-400">
-                      {project.format}
-                    </span>
+
+                    <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/10">
+                      <video
+                        controls
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                      >
+                        <source
+                          src="https://ik.imagekit.io/ns9uknww8b/sample-video.mp4"
+                          type="video/mp4"
+                        />
+                        {isEs
+                          ? "Tu navegador no soporta el elemento de video."
+                          : "Your browser does not support the video tag."}
+                      </video>
+                    </div>
                   </div>
 
-                  <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
-                      <span className="text-xs font-mono uppercase text-purple-600 dark:text-purple-400 font-semibold">
-                        {isEs ? "Enfoque del Proyecto" : "Project Focus"}
+                  {/* Architecture & Technical Solution Card */}
+                  <div className="rounded-3xl p-6 sm:p-10 glass-card border border-slate-200 dark:border-white/10 space-y-6">
+                    <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse" />
+                        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                          {isEs ? "Arquitectura y Solución Técnica" : "Architecture & Technical Solution"}
+                        </h2>
+                      </div>
+                      <span className="text-xs font-mono text-purple-600 dark:text-purple-400">
+                        {project.format}
                       </span>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        {isEs
-                          ? "Diseñado y programado desde cero con foco en velocidad de carga, UX intuitiva y conversión directa."
-                          : "Designed and engineered from scratch focusing on load speed, intuitive UX, and direct conversion."}
-                      </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
-                      <span className="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 font-semibold">
-                        {isEs ? "Entrega & Escalabilidad" : "Delivery & Scalability"}
-                      </span>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        {isEs
-                          ? "Arquitectura modular con soporte multilenguaje, rendimiento optimizado y despliegue continuo."
-                          : "Modular architecture with multilingual support, optimized performance, and continuous deployment."}
-                      </p>
+                    <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
+                        <span className="text-xs font-mono uppercase text-purple-600 dark:text-purple-400 font-semibold">
+                          {isEs ? "Enfoque del Proyecto" : "Project Focus"}
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                          {isEs
+                            ? "Diseñado y programado desde cero con foco en velocidad de carga, UX intuitiva y conversión directa."
+                            : "Designed and engineered from scratch focusing on load speed, intuitive UX, and direct conversion."}
+                        </p>
+                      </div>
+
+                      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2">
+                        <span className="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400 font-semibold">
+                          {isEs ? "Entrega & Escalabilidad" : "Delivery & Scalability"}
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                          {isEs
+                            ? "Arquitectura modular con soporte multilenguaje, rendimiento optimizado y despliegue continuo."
+                            : "Modular architecture with multilingual support, optimized performance, and continuous deployment."}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
